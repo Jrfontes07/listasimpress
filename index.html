@@ -46,14 +46,15 @@
     </style>
 </head>
 <body>
-    <h1>Catálogo de Peças</h1>
+    <h1><strong>Catálogo de Peças</strong></h1>
     <input type="text" id="search-box" placeholder="Pesquisar">
     <ul id="results"></ul>
 
     <script>
-        // Dados em formato JSON
-        var data = [
-            { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC90-01143B", "Descrição": "Bandeja de Papel" },
+        document.addEventListener("DOMContentLoaded", function() {
+            // Dados em formato JSON
+            var data = [
+                 { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC90-01143B", "Descrição": "Bandeja de Papel" },
           { "Marca": "HP", "Modelo": "E87660", "Código": "JC93-01039A", "Descrição": "Sensores ACR Completo" },
 { "Marca": "HP", "Modelo": "E87660", "Código": "JC98-05425A", "Descrição": "Belt de Transferência" },
 { "Marca": "HP", "Modelo": "E87660", "Código": "JC82-00543A", "Descrição": "Placa Principal" },
@@ -161,45 +162,51 @@
     { "Marca": "Samsung", "Modelo": "M4580", "Código": "JC90-01080A", "Descrição": "Rolo Apanhador MP" }
 ];
 
-        // Função para exibir resultados da pesquisa
-        function displayResults(results) {
-            var resultList = document.getElementById("results");
-            resultList.innerHTML = ""; // Limpar resultados anteriores
-
-            if (results.length > 0) {
-                resultList.style.display = "block"; // Mostrar a lista de resultados apenas se houver resultados
-            } else {
-                resultList.style.display = "none"; // Ocultar a lista de resultados se não houver resultados
-            }
-
-            results.forEach(function (item) {
-                var listItem = document.createElement("li");
-                listItem.textContent = "Marca: " + item.Marca + ", Modelo: " + item.Modelo + ", Código: " + item.Código + ", Descrição: " + item.Descrição;
-                resultList.appendChild(listItem);
-            });
-        }
-
-        // Evento de digitação na caixa de pesquisa
-        var searchBox = document.getElementById("search-box");
-        searchBox.addEventListener("input", function () {
-            var query = searchBox.value.toLowerCase();
-            var results = data.filter(function (item) {
-                return (
-                    item.Marca.toLowerCase().includes(query) ||
-                    item.Modelo.toLowerCase().includes(query) ||
-                    item.Código.toLowerCase().includes(query) ||
-                    item.Descrição.toLowerCase().includes(query)
-                );
-            });
-            displayResults(results);
-        });
-
-        // Limpar resultados quando a pesquisa for apagada
-        searchBox.addEventListener("blur", function () {
-            if (searchBox.value === "") {
+            // Função para exibir resultados da pesquisa
+            function displayResults(results) {
                 var resultList = document.getElementById("results");
-                resultList.style.display = "none";
+                resultList.innerHTML = ""; // Limpar resultados anteriores
+
+                if (results.length > 0) {
+                    resultList.style.display = "block"; // Mostrar a lista de resultados apenas se houver resultados
+                } else {
+                    resultList.style.display = "none"; // Ocultar a lista de resultados se não houver resultados
+
+                    // Adicione uma mensagem de "Nenhum resultado encontrado"
+                    var noResultsMessage = document.createElement("li");
+                    noResultsMessage.textContent = "<strong>Nenhum resultado encontrado.</strong>";
+                    resultList.appendChild(noResultsMessage);
+                }
+
+                results.forEach(function (item) {
+                    var listItem = document.createElement("li");
+                    listItem.innerHTML = "<strong>Marca:</strong> " + item.Marca + ", <strong>Modelo:</strong> " + item.Modelo + ", <strong>Código:</strong> " + item.Código + ", <strong>Descrição:</strong> " + item.Descrição;
+                    resultList.appendChild(listItem);
+                });
             }
+
+            // Evento de digitação na caixa de pesquisa
+            var searchBox = document.getElementById("search-box");
+            searchBox.addEventListener("input", function () {
+                var query = searchBox.value.toLowerCase();
+                var results = data.filter(function (item) {
+                    return (
+                        item.Marca.toLowerCase().includes(query) ||
+                        item.Modelo.toLowerCase().includes(query) ||
+                        item.Código.toLowerCase().includes(query) ||
+                        item.Descrição.toLowerCase().includes(query)
+                    );
+                });
+                displayResults(results);
+            });
+
+            // Limpar resultados quando a pesquisa for apagada
+            searchBox.addEventListener("blur", function () {
+                if (searchBox.value === "") {
+                    var resultList = document.getElementById("results");
+                    resultList.style.display = "none";
+                }
+            });
         });
     </script>
 </body>
