@@ -51,36 +51,57 @@
     <ul id="results"></ul>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Dados em formato JSON
-            var data = [
+    document.addEventListener("DOMContentLoaded", function() {
+        // Dados em formato JSON
+        var data = [
+            // ... Outros dados já existentes ...
+
+            // Itens da Xerox C8130
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "109R00790", "Descrição": "KIT DO ROLO DE ALIMENTAÇÃO DA BANDEJA 2-5" },
+         { "Marca": "Xerox", "Modelo": "C8130", "Código": "604K66430", "Descrição": "KIT DO ROLO DE ALIMENTAÇÃO DA GAVETA 1" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "675K82243", "Descrição": "KIT ROLOS ALIMENTADORES" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "676K51541", "Descrição": "REVELADOR CIANO (C)" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "676K51531-SI", "Descrição": "REVELADOR K DA IMPRESSORA COLORIDA VERSALINK" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "676K51551-SI", "Descrição": "REVELADOR MAGENTA" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "675K85030", "Descrição": "REVELADOR PRETO" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "013R00662", "Descrição": "UNIDADE DE IMAGEM" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "008R08101", "Descrição": "XRX RESERVATÓRIO TONER USADO  C8130/45 (69K)" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "008R08103", "Descrição": "XRX SEGUNDO BTR 200.000 PÁGINAS" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "013R00681", "Descrição": "XRX UNIDADE DE CILINDRO 180.000 PÁGINAS" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "001R00623", "Descrição": "XRX UNIDADE DE LIMPEZA ITB 160.000 PÁGINAS" },
+
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "2Z01763M9", "Descrição": "CABO DE FORÇA 20A C19 TROPICALIZAÇÃO XEROX" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "007K21500-SI", "Descrição": "CONJUNTO DO MOTOR DISPENSADOR DE TONER" },
+            { "Marca": "Xerox", "Modelo": "C8130", "Código": "064K94660-SI", "Descrição": "CORREIA DE TRANSFERÊNCIA" },
                  { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC90-01143B", "Descrição": "Bandeja de Papel" },
           { "Marca": "HP", "Modelo": "E87660", "Código": "JC93-01039A", "Descrição": "Sensores ACR Completo" },
 { "Marca": "HP", "Modelo": "E87660", "Código": "JC98-05425A", "Descrição": "Belt de Transferência" },
 { "Marca": "HP", "Modelo": "E87660", "Código": "JC82-00543A", "Descrição": "Placa Principal" },
-
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC95-02030B", "Descrição": "Tampa Frontal" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC91-01023A", "Descrição": "Fusor" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC92-02885A", "Descrição": "Placa Principal" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC97-04321V", "Descrição": "Painel Completo" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC90-01063A", "Descrição": "Rolete Bandeja Transparente" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC66-02842A", "Descrição": "Rolo de Transferência" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC93-00334A", "Descrição": "Frame Traseiro" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC90-01232A", "Descrição": "Duplex" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC95-01303C", "Descrição": "Tampa Traseira" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC97-04065A", "Descrição": "Laser" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC93-00544B", "Descrição": "Drive Main" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC90-01043C", "Descrição": "MP" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC93-00545A", "Descrição": "Drive Feed" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC47-00033A", "Descrição": "Clutch" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "0604-001393", "Descrição": "PHOTO-INTERRUPTER" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC44-00197A", "Descrição": "Placa de Alta HVPS" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC47-00036B", "Descrição": "Clutch" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "0609-001408", "Descrição": "CIS" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC39-01478A", "Descrição": "Cabo Flat CIS" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC97-03069A", "Descrição": "Separador ADF" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC93-00761A", "Descrição": "Drive DADF" },
-    { "Marca": "Samsung", "Modelo": "M4070", "Código": "JC44-00097E", "Descrição": "Fonte" },
+          { "Marca": "Samsung", "Modelo": "M4020", "Código": "JC92-02892A", "Descrição": "Placa Principal" },
+{ "Marca": "Samsung", "Modelo": "M4020", "Código": "JC44-00095E", "Descrição": "Fonte 110V" },
+    { "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC90-01143B", "Descrição": "Bandeja de Papel" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC95-02030B", "Descrição": "Tampa Frontal" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC91-01023A", "Descrição": "Fusor" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC92-02885A", "Descrição": "Placa Principal" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC97-04321V", "Descrição": "Painel Completo" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC90-01063A", "Descrição": "Rolete Bandeja Transparente" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC66-02842A", "Descrição": "Rolo de Transferência" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC93-00334A", "Descrição": "Frame Traseiro" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC90-01232A", "Descrição": "Duplex" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC95-01303C", "Descrição": "Tampa Traseira" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC97-04065A", "Descrição": "Laser" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC93-00544B", "Descrição": "Drive Main" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC90-01043C", "Descrição": "MP" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC93-00545A", "Descrição": "Drive Feed" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC47-00033A", "Descrição": "Clutch" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "0604-001393", "Descrição": "PHOTO-INTERRUPTER" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC44-00197A", "Descrição": "Placa de Alta HVPS" },
+{ "Marca": "Samsung", "Modelo": "M4070 / M4020", "Código": "JC47-00036B", "Descrição": "Clutch" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "0609-001408", "Descrição": "CIS" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC39-01478A", "Descrição": "Cabo Flat CIS" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC97-03069A", "Descrição": "Separador ADF" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC93-00761A", "Descrição": "Drive DADF" },
+{ "Marca": "Samsung", "Modelo": "M4070", "Código": "JC44-00097E", "Descrição": "Fonte" },
     // Samsung M4080
     { "Marca": "Samsung", "Modelo": "M4080", "Código": "JC90-01541A", "Descrição": "Duplex" },
     { "Marca": "Samsung", "Modelo": "M4080", "Código": "JC59-00035A", "Descrição": "HD 320GB" },
@@ -159,7 +180,14 @@
     { "Marca": "Samsung", "Modelo": "M4580", "Código": "JC47-00033E", "Descrição": "Clutch" },
     { "Marca": "Samsung", "Modelo": "M4580", "Código": "JC93-00923A", "Descrição": "Drive Main" },
     { "Marca": "Samsung", "Modelo": "M4580", "Código": "JC90-01082A", "Descrição": "Rolete de Retardo MP" },
-    { "Marca": "Samsung", "Modelo": "M4580", "Código": "JC90-01080A", "Descrição": "Rolo Apanhador MP" }
+    { "Marca": "Samsung", "Modelo": "M4580", "Código": "JC90-01080A", "Descrição": "Rolo Apanhador MP" },
+          // Samsung X4220rx
+{ "Marca": "Samsung", "Modelo": "X4220rx", "Código": "JC91-01210A", "Descrição": "Fusor" },
+{ "Marca": "Samsung", "Modelo": "X4220rx", "Código": "JC93-00540B", "Descrição": "Rolete Bandeja 2-x" },
+{ "Marca": "Samsung", "Modelo": "X4220rx", "Código": "JC93-01378A", "Descrição": "Belt de Transferência" },
+{ "Marca": "Samsung", "Modelo": "X4220rx", "Código": "JC95-01941A-SI", "Descrição": "Tampa de Alimentação da Guia Lateral" },
+{ "Marca": "Samsung", "Modelo": "X4220rx", "Código": "JC96-09197APRS", "Descrição": "Reservatório de Toner" },
+          
 ];
 
             // Função para exibir resultados da pesquisa
